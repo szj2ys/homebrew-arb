@@ -8,9 +8,10 @@ class Arb < Formula
     sha256 "8dfcd9113401277f1739a3014e29c777e41400e26e9e9ac5eb4ce56c2f7068fa"
   end
 
-  def download_strategy
-    ArbGitHubReleaseAssetDownloadStrategy
-  end
+  # Homebrew formulas support specifying the download strategy class directly.
+  # This is required here because GitHub web release URLs return 404 in this
+  # environment, so we fetch the asset via the API.
+  download_strategy ArbGitHubReleaseAssetDownloadStrategy
 
   def install
     # The release asset contains Arb.app at top-level.
