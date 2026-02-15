@@ -37,7 +37,7 @@ class ArbGitHubReleaseAssetDownloadStrategy < CurlDownloadStrategy
     args
   end
 
-  def _fetch(*args)
+  def fetch(*args, **kwargs)
     ENV["HOMEBREW_GITHUB_API_TOKEN"] ||= ENV["GITHUB_TOKEN"] || ENV["GH_TOKEN"]
     super
   end
