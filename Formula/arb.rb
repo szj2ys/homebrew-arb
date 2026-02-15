@@ -9,7 +9,7 @@ class Arb < Formula
   end
 
   def download_strategy
-    GitHubPrivateRepositoryReleaseDownloadStrategy
+    ArbGitHubReleaseAssetDownloadStrategy
   end
 
   def install
@@ -22,5 +22,18 @@ class Arb < Formula
 
   test do
     assert_match version.to_s, shell_output("#{bin}/arb --version")
+  end
+end
+
+class ArbGitHubReleaseAssetDownloadStrategy < CurlDownloadStrategy
+  def curl_args
+    args = super
+    args << "-H" << "Accept: application/octet-stream"
+
+    token = ENV["HOMEBREW_GITHUB_API_TOKEN"]
+    token ||= ENV["GITHUB_TOKEN"]
+    token ||= ENV["GH_TOKEN"]
+    args << "-H" << "Authorization: Bearer #{token}" if token && !token.empty?
+    args
   end
 end
