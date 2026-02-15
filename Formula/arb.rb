@@ -36,4 +36,9 @@ class ArbGitHubReleaseAssetDownloadStrategy < CurlDownloadStrategy
     args << "-H" << "Authorization: Bearer #{token}" if token && !token.empty?
     args
   end
+
+  def _fetch(*args)
+    ENV["HOMEBREW_GITHUB_API_TOKEN"] ||= ENV["GITHUB_TOKEN"] || ENV["GH_TOKEN"]
+    super
+  end
 end
