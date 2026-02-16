@@ -1,11 +1,11 @@
 class Arb < Formula
   desc "Arb terminal application"
   homepage "https://github.com/szj2ys/arb"
-  version "0.3.1"
+  version "0.3.2"
 
   on_macos do
-    url "https://github.com/szj2ys/arb/releases/download/v0.3.1/arb_for_update.zip"
-    sha256 "8dfcd9113401277f1739a3014e29c777e41400e26e9e9ac5eb4ce56c2f7068fa"
+    url "https://github.com/szj2ys/arb/releases/download/v0.3.2/arb_for_update.zip"
+    sha256 "5e7ff294fca591ad0fca394b7ba270b5d6078c276d793d2d7fa278179cc93e2b"
   end
 
   def install
